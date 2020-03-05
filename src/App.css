@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+.position-center {
+  display: flex;
+  justify-content: center;
+}
+.flex-dir-row {
+  flex-direction: row;
+}
+.campaign-data-tbl {
+  width: 600px;
+}
+.campaign-data-tbl thead tr th {
+  background-color: #4472c4;
+  color: white;
+}
+.status {
+  width: 10px;
+  height: 10px;
+  margin: 6px;
+  border-radius: 50%;
+}
+.active {
+  background-color: green;
+}
+.inactive {
+  background-color: red;
+}
+
+.flex {
+  display: flex;
+}

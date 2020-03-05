@@ -1,13 +1,13 @@
 import React from "react";
-import DateRangeSelector from "./DateRangeSelector";
-import Search from "./SearchCampaign";
-import CampaignData from "./CampaignData";
+import CampaignDataContainer from "../containers/CampaignData";
+import DateRangeContainer from "../containers/DateRangeSelector";
+import SearchCampaignContainer from "../containers/SearchCampaign";
 
 export default class Campaign extends React.Component {
   componentDidMount() {
     const { addCampaigns, setUsers } = this.props;
     window.AddCampaigns = arr => {
-      addCampaigns(arr);
+      addCampaigns((arr = []));
     };
     fetch("https://jsonplaceholder.typicode.com/users")
       .then(response => response.json())
@@ -16,9 +16,13 @@ export default class Campaign extends React.Component {
   render() {
     return (
       <div>
-        <DateRangeSelector props={this.props} />
-        <Search props={this.props} />
-        <CampaignData props={this.props} />
+        <div className="position-center flex-dir-row">
+          <DateRangeContainer />
+          <SearchCampaignContainer />
+        </div>
+        <div className="position-center">
+          <CampaignDataContainer />
+        </div>
       </div>
     );
   }

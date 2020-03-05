@@ -2,28 +2,28 @@ import React from "react";
 
 export default class DateRangeSelector extends React.Component {
   focus(type, event) {
-    const { props } = this.props;
+    const { focusStartDate, focusEndDate } = this.props;
     if (type === "start" && event === "focus") {
-      props.focusStartDate("date");
+      focusStartDate("date");
     } else if (type === "start" && event === "blur") {
-      props.focusStartDate("text");
+      focusStartDate("text");
     } else if (type === "end" && event === "focus") {
-      props.focusEndDate("date");
+      focusEndDate("date");
     } else if (type === "end" && event === "blur") {
-      props.focusEndDate("text");
+      focusEndDate("text");
     }
   }
   start(e) {
-    const { props } = this.props;
-    props.setStartDate(e.target.value);
+    const { setStartDate } = this.props;
+    setStartDate(e.target.value);
   }
   end(e) {
-    const { props } = this.props;
-    props.setEndDate(e.target.value);
+    const { setEndDate } = this.props;
+    setEndDate(e.target.value);
   }
 
   render() {
-    const { startType, endType } = this.props.props;
+    const { startType, endType, startDate, endDate } = this.props;
     return (
       <div>
         <input
@@ -33,6 +33,7 @@ export default class DateRangeSelector extends React.Component {
           onBlur={() => this.focus("start", "blur")}
           onChange={e => this.start(e)}
           name="start"
+          value={startDate}
         />
         <input
           type={endType}
@@ -41,6 +42,7 @@ export default class DateRangeSelector extends React.Component {
           onBlur={() => this.focus("end", "blur")}
           onChange={e => this.end(e)}
           name="end"
+          value={endDate}
         />
       </div>
     );

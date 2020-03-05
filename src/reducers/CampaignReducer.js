@@ -1,4 +1,3 @@
-import moment from "moment";
 import {
   FOCUS_START_DATE,
   FOCUS_END_DATE,
@@ -17,80 +16,80 @@ const initialState = {
     {
       id: 1,
       name: "Divavu",
-      startDate: "9/19/2017",
-      endDate: "3/9/2018",
+      startDate: "2019-09-19",
+      endDate: "2020-03-09",
       Budget: 88377,
       userId: 3
     },
     {
       id: 2,
       name: "Jaxspan",
-      startDate: "11/21/2017",
-      endDate: "2/21/2018",
+      startDate: "2017-11-21",
+      endDate: "2018-02-21",
       Budget: 608715,
       userId: 6
     },
     {
       id: 3,
       name: "Miboo",
-      startDate: "11/1/2017",
-      endDate: "6/20/2017",
+      startDate: "2017-11-01",
+      endDate: "2017-06-20",
       Budget: 239507,
       userId: 7
     },
     {
       id: 4,
       name: "Trilith",
-      startDate: "8/25/2017",
-      endDate: "11/30/2017",
+      startDate: "2017-8-25",
+      endDate: "2017-11-30",
       Budget: 179838,
       userId: 1
     },
     {
       id: 5,
       name: "Layo",
-      startDate: "11/28/2017",
-      endDate: "3/10/2018",
+      startDate: "2017-11-28",
+      endDate: "2018-03-10",
       Budget: 837850,
       userId: 9
     },
     {
       id: 6,
       name: "Photojam",
-      startDate: "7/25/2017",
-      endDate: "6/23/2017",
+      startDate: "2017-07-25",
+      endDate: "2017-06-23",
       Budget: 858131,
       userId: 3
     },
     {
       id: 7,
       name: "Blogtag",
-      startDate: "6/27/2017",
-      endDate: "1/15/2018",
+      startDate: "2017-06-27",
+      endDate: "2018-01-15",
       Budget: 109078,
       userId: 2
     },
     {
       id: 8,
       name: "Rhyzio",
-      startDate: "10/13/2017",
-      endDate: "1/25/2018",
+      startDate: "2017-10-13",
+      endDate: "2018-01-25",
       Budget: 272552,
       userId: 4
     },
     {
       id: 9,
       name: "Zoomcast",
-      startDate: "9/6/2017",
-      endDate: "11/10/2017",
+      startDate: "2017-09-06",
+      endDate: "2017-11-10",
       Budget: 301919,
       userId: 8
     },
     {
       id: 10,
       name: "Realbridge",
-      startDate: "3/5/2018",
-      endDate: "10/2/2017 ",
+      startDate: "2018-03-05",
+      endDate: "2017-10-02",
       Budget: 505602,
       userId: 5
     }
@@ -111,7 +110,7 @@ function rootReducer(state, action) {
       records = [...state.records, ...action.data];
       return { ...state, ...records };
     case SET_USERS:
-      records = state.records;
+      records = [...state.records];
       const users = action.data;
       records = records.map(record => {
         let index = users.findIndex(user => user.id === record.userId);
@@ -122,24 +121,18 @@ function rootReducer(state, action) {
         }
         return record;
       });
-      return { ...state, ...{ records }, ...{ users: action.data } };
+      return { ...state, records, ...{ users: action.data } };
     case SEARCH_CAMPAIGN_RECORDS:
-      // if (action.data.length) {
-      records = state.records.filter(record => record.username === action.data);
-      // }
-      return { ...state, ...{ records }, ...{ searchText: action.data } };
+      return { ...state, ...{ searchText: action.data } };
     case SET_START_DATE:
-      const selectedDate = moment(action.data).format("MM/DD/YYYY");
-      records = state.records.filter(record => selectedDate < record.endDate);
       return {
         ...state,
-        ...{ records },
-        ...{ startDate: selectedDate }
+        ...{ startDate: action.data }
       };
     case SET_END_DATE:
       return {
         ...state,
-        ...{ endDate: moment(action.data).format("MM/DD/YYYY") }
+        ...{ endDate: action.data }
       };
     default:
       return initialState;
