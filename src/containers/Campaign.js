@@ -1,21 +1,17 @@
 import { connect } from "react-redux";
-import Campaign from "../components/Campaign";
-import { addCampaigns, setUsers } from "../actions";
+import { Campaign } from "../components/Campaign.jsx";
+import { addCampaigns } from "../actions/Campaigns";
+import { getUsers } from "../actions/Users";
 
-const mapStateToProps = state => {
+const mapStateToProps = () => {
   return {};
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addCampaigns: arr => dispatch(addCampaigns(arr)),
-    setUsers: arr => dispatch(setUsers(arr))
+    addCampaigns: records => dispatch(addCampaigns(records)),
+    getUsers: () => dispatch(getUsers())
   };
 };
 
-const CampaignContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Campaign);
-
-export default CampaignContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(Campaign);

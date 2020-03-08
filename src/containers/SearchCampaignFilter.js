@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import SearchCampaign from "../components/SearchCampaign";
-import { searchRecords } from "../actions";
+import { SearchCampaign } from "../components/SearchCampaignFilter.jsx";
+import { searchRecords } from "../actions/Campaigns";
 
 const mapStateToProps = state => {
   const { rootReducer } = state;
@@ -16,9 +16,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const SearchCampaignContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchCampaign);
-
-export default SearchCampaignContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(SearchCampaign);

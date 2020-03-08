@@ -1,12 +1,4 @@
-import {
-  FOCUS_START_DATE,
-  FOCUS_END_DATE,
-  SEARCH_CAMPAIGN_RECORDS,
-  ADD_CAMPAIGNS,
-  SET_USERS,
-  SET_START_DATE,
-  SET_END_DATE
-} from "../actions";
+import c from "./../constants";
 
 const initialState = {
   startType: "text",
@@ -94,49 +86,33 @@ const initialState = {
       userId: 5
     }
   ],
-  users: [],
   startDate: "",
   endDate: ""
 };
 
-function rootReducer(state, action) {
+export const rootReducer = (state = initialState, action) => {
   let records;
   switch (action.type) {
-    case FOCUS_START_DATE:
-      return { ...state, ...{ startType: action.data } };
-    case FOCUS_END_DATE:
-      return { ...state, ...{ endType: action.data } };
-    case ADD_CAMPAIGNS:
+    case c.FOCUS_START_DATE:
+      return { ...state, startType: action.data };
+    case c.FOCUS_END_DATE:
+      return { ...state, endType: action.data };
+    case c.ADD_CAMPAIGNS:
       records = [...state.records, ...action.data];
       return { ...state, ...records };
-    case SET_USERS:
-      records = [...state.records];
-      const users = action.data;
-      records = records.map(record => {
-        let index = users.findIndex(user => user.id === record.userId);
-        if (index !== -1) {
-          record.username = users[index].username;
-        } else {
-          record.username = "Unknown User";
-        }
-        return record;
-      });
-      return { ...state, records, ...{ users: action.data } };
-    case SEARCH_CAMPAIGN_RECORDS:
-      return { ...state, ...{ searchText: action.data } };
-    case SET_START_DATE:
+    case c.SEARCH_CAMPAIGN_RECORDS:
+      return { ...state, searchText: action.data };
+    case c.SET_START_DATE:
       return {
         ...state,
-        ...{ startDate: action.data }
+        startDate: action.data
       };
-    case SET_END_DATE:
+    case c.SET_END_DATE:
       return {
         ...state,
-        ...{ endDate: action.data }
+        endDate: action.data
       };
     default:
-      return initialState;
+      return state;
   }
-}
-
-export default rootReducer;
+};
