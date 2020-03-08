@@ -9,7 +9,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addCampaigns: records => dispatch(addCampaigns(records)),
+    addCampaigns: (records = []) => dispatch(addCampaigns(records)),
     getUsers: () => dispatch(getUsers())
   };
 };

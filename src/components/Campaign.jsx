@@ -6,8 +6,8 @@ import SearchCampaignFilter from "../containers/SearchCampaignFilter";
 export const Campaign = props => {
   useEffect(() => {
     const { addCampaigns, getUsers } = props;
-    window.AddCampaigns = arr => {
-      addCampaigns((arr = []));
+    window.AddCampaigns = records => {
+      addCampaigns(records);
     };
     getUsers();
   }, [props]);

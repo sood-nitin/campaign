@@ -9,55 +9,55 @@ const initialState = {
       id: 1,
       name: "Divavu",
       startDate: "2019-09-19",
-      endDate: "2020-03-09",
+      endDate: "2020-03-19",
       Budget: 88377,
       userId: 3
     },
     {
       id: 2,
       name: "Jaxspan",
-      startDate: "2017-11-21",
-      endDate: "2018-02-21",
+      startDate: "2019-11-21",
+      endDate: "2019-02-21",
       Budget: 608715,
       userId: 6
     },
     {
       id: 3,
       name: "Miboo",
-      startDate: "2017-11-01",
-      endDate: "2017-06-20",
+      startDate: "2019-11-01",
+      endDate: "2019-06-20",
       Budget: 239507,
       userId: 7
     },
     {
       id: 4,
       name: "Trilith",
-      startDate: "2017-8-25",
-      endDate: "2017-11-30",
+      startDate: "2019-8-25",
+      endDate: "2019-11-30",
       Budget: 179838,
       userId: 1
     },
     {
       id: 5,
       name: "Layo",
-      startDate: "2017-11-28",
-      endDate: "2018-03-10",
+      startDate: "2019-11-28",
+      endDate: "2019-03-10",
       Budget: 837850,
       userId: 9
     },
     {
       id: 6,
       name: "Photojam",
-      startDate: "2017-07-25",
-      endDate: "2017-06-23",
+      startDate: "2019-07-25",
+      endDate: "2019-06-23",
       Budget: 858131,
       userId: 3
     },
     {
       id: 7,
       name: "Blogtag",
-      startDate: "2017-06-27",
-      endDate: "2018-01-15",
+      startDate: "2019-06-27",
+      endDate: "2019-01-15",
       Budget: 109078,
       userId: 2
     },
@@ -99,7 +99,7 @@ export const rootReducer = (state = initialState, action) => {
       return { ...state, endType: action.data };
     case c.ADD_CAMPAIGNS:
       records = [...state.records, ...action.data];
-      return { ...state, ...records };
+      return { ...state, records };
     case c.SEARCH_CAMPAIGN_RECORDS:
       return { ...state, searchText: action.data };
     case c.SET_START_DATE:
