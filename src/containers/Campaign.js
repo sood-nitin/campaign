@@ -3,10 +3,6 @@ import { Campaign } from "../components/Campaign.jsx";
 import { addCampaigns } from "../actions/Campaigns";
 import { getUsers } from "../actions/Users";
 
-const mapStateToProps = () => {
-  return {};
-};
-
 const mapDispatchToProps = dispatch => {
   return {
     addCampaigns: (records = []) => dispatch(addCampaigns(records)),
@@ -14,4 +10,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Campaign);
+export default connect(null, mapDispatchToProps)(Campaign);

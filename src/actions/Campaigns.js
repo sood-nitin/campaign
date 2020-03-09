@@ -1,21 +1,26 @@
-import c from "../constants";
+import {
+  SEARCH_CAMPAIGN_RECORDS,
+  ADD_CAMPAIGNS,
+  SET_START_DATE,
+  SET_END_DATE
+} from "./../constants";
 
 export const searchRecords = text => ({
-  type: c.SEARCH_CAMPAIGN_RECORDS,
+  type: SEARCH_CAMPAIGN_RECORDS,
   data: text
 });
 
 export const addCampaigns = newRecords => ({
-  type: c.ADD_CAMPAIGNS,
+  type: ADD_CAMPAIGNS,
   data: newRecords
 });
 
 export const setStartDate = date => ({
-  type: c.SET_START_DATE,
+  type: SET_START_DATE,
   data: date
 });
 
 export const setEndDate = date => ({
-  type: c.SET_END_DATE,
+  type: SET_END_DATE,
   data: date
 });

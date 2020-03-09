@@ -1,36 +1,11 @@
 import React from "react";
 import moment from "moment";
-import { kFormatter } from "../utils/campaign";
-export const CampaignData = props => {
-  const { startDate, endDate, searchText, records, users } = props;
+import { kFormatter, filterRecords } from "../utils/campaign";
+export const CampaignTable = props => {
+  const { records, users } = props;
 
-  const filterRecords = filteredRecords =>
-    filteredRecords.filter(record => {
-      const nameMatched = record.name
-        .toLowerCase()
-        .includes(searchText.toLowerCase());
-      if (!nameMatched) {
-        return false;
-      }
+  const filteredRecords = filterRecords([...records], props);
 
-      if (startDate && endDate) {
-        return startDate < record.endDate && endDate > record.startDate;
-      } else if (startDate) {
-        return startDate < record.endDate;
-      } else if (endDate) {
-        return endDate > record.startDate;
-      }
-      return true;
-    });
-  const filteredRecords = filterRecords([...records]);
-  const getUserName = id => {
-    for (let idx = 0; idx < users.length; idx++) {
-      if (users[idx].id === id) {
-        return users[idx].name;
-      }
-    }
-    return "Unknown User";
-  };
   return (
     <div>
       <table className="campaign-data-tbl">
@@ -45,14 +20,19 @@ export const CampaignData = props => {
           </tr>
         </thead>
         <tbody>
-          {filteredRecords.map((record, index) => (
-            <tr key={index}>
+          {filteredRecords.map(record => (
+            <tr key={record.id}>
               <td>{record.name}</td>
-              <td>{getUserName(record.userId)}</td>
+              <td>
+                {users[record.userId]
+                  ? users[record.userId].name
+                  : "Unknown User"}
+              </td>
               <td>{moment(record.startDate).format("MM/DD/YYYY")}</td>
               <td>{moment(record.endDate).format("MM/DD/YYYY")}</td>
               <td>
-                {record.endDate > moment(new Date()).format("YYYY-MM-DD") ? (
+                {moment(record.endDate).format("YYYY-MM-DD") >
+                moment(new Date()).format("YYYY-MM-DD") ? (
                   <div className="flex">
                     <div className="status active"></div>Active
                   </div>

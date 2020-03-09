@@ -1,4 +1,4 @@
-import c from "../constants";
+import { SET_USERS } from "../constants";
 
 const initialUserState = {
   users: [],
@@ -6,9 +6,14 @@ const initialUserState = {
 };
 
 export const userReducer = (state = initialUserState, action) => {
-  switch (action.type) {
-    case c.SET_USERS:
-      return { ...state, users: action.data, isLoading: false };
+  let { type, data } = action;
+  switch (type) {
+    case SET_USERS:
+      let users = {};
+      for (let idx = 0; idx < data.length; idx++) {
+        users[data[idx].id] = data[idx];
+      }
+      return { ...state, users, isLoading: false };
     default:
       return state;
   }

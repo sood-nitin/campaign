@@ -2,13 +2,9 @@ import { connect } from "react-redux";
 import { SearchCampaign } from "../components/SearchCampaignFilter.jsx";
 import { searchRecords } from "../actions/Campaigns";
 
-const mapStateToProps = state => {
-  const { rootReducer } = state;
-  const { searchText } = rootReducer;
-  return {
-    searchText
-  };
-};
+const mapStateToProps = ({ campaignReducer: { searchText } }) => ({
+  searchText
+});
 
 const mapDispatchToProps = dispatch => {
   return {

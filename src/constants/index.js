@@ -1,3 +1,15 @@
-import * as types from "./ActionTypes";
+import {
+  SEARCH_CAMPAIGN_RECORDS,
+  ADD_CAMPAIGNS,
+  SET_START_DATE,
+  SET_END_DATE,
+  SET_USERS
+} from "./ActionTypes";
 
-export default types;
+export {
+  SEARCH_CAMPAIGN_RECORDS,
+  ADD_CAMPAIGNS,
+  SET_START_DATE,
+  SET_END_DATE,
+  SET_USERS
+};
