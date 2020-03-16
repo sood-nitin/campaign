@@ -5,7 +5,7 @@ export const SearchCampaign = props => {
   return (
     <div>
       <input
-        class="m-8"
+        className="m-8"
         type="text"
         placeholder="Search by Name"
         onChange={e => searchCampaignRecords(e.target.value)}
