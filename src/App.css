@@ -44,7 +44,7 @@
   flex-direction: row;
 }
 .campaign-data-tbl {
-  width: 600px;
+  width: 800px;
 }
 .campaign-data-tbl thead tr th {
   background-color: #4472c4;
@@ -65,4 +65,7 @@
 
 .flex {
   display: flex;
+}
+.m-8 {
+  margin: 8px;
 }

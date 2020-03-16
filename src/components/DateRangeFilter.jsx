@@ -8,6 +8,7 @@ export const DateRangeSelector = props => {
   return (
     <div>
       <input
+        class="m-8"
         type={startType}
         placeholder="Start Date"
         onFocus={() => setStartType("date")}
@@ -18,6 +19,7 @@ export const DateRangeSelector = props => {
         value={startDate}
       />
       <input
+        class="m-8"
         type={endType}
         placeholder="End Date"
         min={moment(startDate).format("YYYY-MM-DD")}

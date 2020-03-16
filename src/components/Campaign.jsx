@@ -13,7 +13,7 @@ export const Campaign = props => {
   }, [props]);
   return (
     <div>
-      <div className="position-center flex-dir-row">
+      <div className="position-center flex-dir-row mr-5">
         <DateRangeFilter />
         <SearchCampaignFilter />
       </div>

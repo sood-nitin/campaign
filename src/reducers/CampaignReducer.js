@@ -61,7 +61,7 @@ const initialState = {
       name: "Blogtag",
       startDate: "6/27/2017",
       endDate: "01/15/2018",
-      " Budget": 109078,
+      Budget: 109078,
       userId: 2
     },
     {
